@@ -27,6 +27,7 @@ main {
 }
 
 h1{
+    font-size: 5rem;
     color: var(--text);
     font-family: "lores-12", sans-serif;
     font-weight: 400;
@@ -43,8 +44,18 @@ h2 {
     color: var(--text);
 }
 
+h3 {
+    color: var(--text);
+    font-family: "lores-12", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 2rem;
+
+}
+
 section {
     display: flex;
+    flex-direction: column;
     background-color: var(--accent);
     width: 40rem;
     height: 40rem;
@@ -67,9 +78,11 @@ aside {
 
 button {
     display: flex;
+    align-items: center;
     height: 2rem;
     background-color: var(--text);
     margin: 40px;
+    padding: 10px;
 
 }
 
