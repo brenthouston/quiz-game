@@ -1,0 +1,101 @@
+
+
+:root {
+    --primary: #333333;
+    --accent: #474c48;
+    --text: rgb(42, 203, 21);
+}
+
+body {
+
+    background: var(--primary)
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.5rem;
+    line-height: 6rem;
+}
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+h1{
+    color: var(--text);
+    font-family: "lores-12", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 40px;
+}
+
+h2 {
+
+    font-family: "lores-12", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 4rem;
+    color: var(--text);
+}
+
+section {
+    display: flex;
+    background-color: var(--accent);
+    width: 40rem;
+    height: 40rem;
+    padding: 20px;
+    border: 1px dashed var(--text);
+}
+
+aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+    background-color: var(--accent);
+    width: 30rem;
+    height: 40rem;
+    padding: 20px;
+    border: 1px dashed var(--text);
+    
+}
+
+button {
+    display: flex;
+    height: 2rem;
+    background-color: var(--text);
+    margin: 40px;
+
+}
+
+#count-down-timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 27.3rem;
+    height: 30%;
+    padding: 20px;
+    border: 1px dashed var(--text);
+}
+
+#score-card {
+    width: 27.3rem;
+    height: 30%;
+    padding: 20px;
+    border: 1px dashed var(--text);
+}
+
+
+#high-scores {
+    width: 27.3rem;
+    height: 30%;
+    padding: 20px;
+    border: 1px dashed var(--text);
+}
+}
