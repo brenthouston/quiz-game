@@ -52,8 +52,8 @@ var qabox = document.querySelector("#qa");
 var p = document.querySelector("button");
 
 var numOfHighScores = 5;
-var highScores = "highScores";
-var highScoreString = localStorage.getItem(highScores);
+// var highScores = "highScores";
+var highScoreString = localStorage.getItem("highScores");
 var highScores = JSON.parse(highScoreString) ?? [];
 
 document.querySelector("#start-game").addEventListener("click", function () {
@@ -84,7 +84,7 @@ function startQuiz() {
       timeH2.textContent = "time up!";
       isPlaying = false;
       endGame();
-      checkHighScore();
+      checkHighScore(score);
       showHighScores();
     }
   }, 1000);
@@ -169,8 +169,8 @@ function showHide() {
 }
 //      high scores container
 function checkHighScore(score) {
-  var highScores = JSON.parse(highScoreString) ?? [];
-  var lowestScore = highScores[numOfHighScores - 1]?.score ?? 0;
+  var highScores = JSON.parse(highScoreString) || [];
+  var lowestScore = highScores[numOfHighScores - 1]?.score || 0;
   if (score > lowestScore) {
     saveHighScore(score, highScores);
     showHighScores();
@@ -190,13 +190,14 @@ function endGame() {
   } else {
     x.style.display = qabox.remove();
   }
-  highScores.map((score) => "<li>${score.score} - ${score.name");
+  // highScores.map((score) => `<li>${score.score} - ${score.name}`);
   var highScoreList = document.getElementById("high-scores");
  
-  highScoreList.textContent = highScores.map((score) => "<li>${score.score} - ${score.name}"
+  highScoreList.innerHTML = highScores.map((score) => `<li>${score.score} - ${score.name}`
     );
   }
   function showHighScores() {
+    
     var highScores = JSON.parse(localStorage.getItem(highScores)) ?? [];
     var highScoresList = document.getElementById(highScores);
     
@@ -211,7 +212,7 @@ function endGame() {
     highScores.push(newScore);
     highScores.sort((a, b) => b.score - a.score);
     highScores.splice(numOfHighScores);
-    localStorage.setItem(highScores, JSON.stringify(highScores));
+    localStorage.setItem("highScores", JSON.stringify(highScores));
   }
   
   function checkAnswer(btn) {
