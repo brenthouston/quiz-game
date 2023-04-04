@@ -20,7 +20,7 @@
         </div>
     </header>
     <main>
-        <section>
+        <section id="qa">
             <!--    container for the question -->
             <div id="ask-box">
                 <h3 id="ask"></h3>
@@ -28,7 +28,7 @@
             <!--    container for the answers -->
             <div id="answer">
                 <!-- continer for each answer -->
-                <button>1.&nbsp;<p id="btn1" class="false"></p></button>
+                <button>1.&nbsp;<p id="btn1" class="false" ></p></button>
                 <button>2.&nbsp;<p id="btn2" class="false"></p></button>
                 <button>3.&nbsp;<p id="btn3" class="false"></p></button>
                 <button>4.&nbsp;<p id="btn4" class="false"></p> </button>
@@ -43,10 +43,14 @@
             <!-- container for the score -->
             <div id="score-card">
                 <h2 id="wrong"></h2>
-                <H2 id="uscore"><span id="count"></span></H2>
+                <h2>SCORE:</h2>
+                <h2><span id="score"></span></h2>
             </div>
             <!-- container for high scores -->
-            <div id="high-scores"></div>
+            <div >
+                <h2>HIGH SCORES:</h2>
+                <ol id="high-scores"></ol>
+            </div>
             <div>
         </aside>
            
@@ -54,6 +58,7 @@
         <!-- container for the quiz -->
         
     </main>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="assets/script.js"></script>
 </body>
 </html>
