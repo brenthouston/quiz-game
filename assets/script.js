@@ -44,7 +44,7 @@ var qabox = document.querySelector("#qa");
 var p = document.querySelector("button");
 
 var numOfHighScores = 5;
-
+var highScoreList = document.getElementById("boxHS");
 var highScoreString = localStorage.getItem("highScores");
 var highScores = JSON.parse(highScoreString)|| [];
 
@@ -60,7 +60,7 @@ function startQuiz() {
   
   score = 0;
   scoreCard.textContent = score;
-  secondsLeft = 100;
+  secondsLeft = 50;
   timeH2.textContent = secondsLeft;
   isPlaying = true;
   //          hide start button
@@ -80,12 +80,14 @@ function startQuiz() {
       endGame();
       checkHighScore(score);
       showHighScores();
-      newGame();
+      setTimeout(() => {
+        newGame();
+      }, 1000);
 
     }
   }, 1000);
-
 }
+
 
 
 
@@ -183,20 +185,23 @@ function endGame() {
     x.style.display = qabox.remove();
   }
 
-  var highScoreList = document.getElementById("boxHS");
-
   highScoreList.innerHTML = highScores.map((score) => `<li>${score.score} - ${score.name}`
     );
   }
   function showHighScores() {
     
-    var highScores = JSON.parse(localStorage.getItem(highScores)) || [];
-    var highScoresList = document.getElementById(highScores);
+    var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+    var highScoresList = document.getElementById("highScores");
     
-    highScoresList.innerHTML = highScores
-    .map((score) => "<li>${score.score} - ${score.name}")
-    score;
+    // highScoresList.innerHTML = highScores.map((score) => "<li>${score.score} - ${score.name}")
+    if (highScoresList !== null){
+    highScoresList.innerHTML = highScores.map((score) => `<li>${score.score} - ${score.name}</li>`).join("");
   }
+
+ 
+  }
+
+
   function saveHighScore(score, highScores) {
    
     var name = prompt("You got a high score! Enter name:");
@@ -215,14 +220,14 @@ function endGame() {
     if (btn.className === "true") {
       setTimeout(() => {
         wrongH2.textContent = "Correct";
-      }, 250);
+      }, 500);
      
       score++;
       scoreCard.textContent = score;
     } else {
       setTimeout(() => {
         wrongH2.textContent = "Incorrect";
-      }, 250);
+      }, 500);
 
       secondsLeft -= 10;
     }
@@ -230,15 +235,18 @@ function endGame() {
     askQuestion();
   }
   
-function newGame(){
-  window.confirm("Would you like to start a new game?\n Either OK or Cancel");
- if(newGame == true){
-  startQuiz();
- }else{
-  isPlaying =false;
- }
- console.log(newGame)
-}
+  function newGame() {
+    if (window.confirm("Would you like to start a new game?\n Either OK or Cancel")) {
+      window.location.reload();
+    } else {
+      ("Thank you for playing!")
+    }
+  }
+  
+
+
+
+
 
   btn1.addEventListener("click", function (event) {
     
