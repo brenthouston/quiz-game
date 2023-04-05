@@ -35,11 +35,10 @@ Project is created with:
 
 ## Deployed App Screenshots
 
-Loaded on mobile viewport
-![Mobile viewport](https://github.com/brenthouston/Portfolio/blob/main/Images/deployed%20site%20loaded%20to%20small%20vierport.png)
 
-Loaded on desktop viewport
-![Desktop viewport](https://github.com/brenthouston/Portfolio/blob/main/Images/deployed%20site%20screenshot.png)
+
+![Deployed game](https://github.com/brenthouston/quiz-game/blob/main/assets/Images/Screenshot%202023-04-04%20at%209.45.03%20PM.png)
+![End of game](https://github.com/brenthouston/quiz-game/blob/main/assets/Images/Screenshot%202023-04-04%20at%209.54.14%20PM.png)
 
 
 
