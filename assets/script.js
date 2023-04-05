@@ -28,19 +28,11 @@ var secondsLeft = 0;
 var isPlaying = false;
 var randomQuestion = "";
 var score = 0;
-
-//      track questions
 var countH2 = document.querySelector("#uscore");
-// create variables to reference DOM elements
-//      timer
 var timeH2 = document.querySelector("#timer");
-//      questions
 var questionsH3 = document.querySelector("#ask");
-//      answers
 var answersDiv = document.querySelector("#answer");
-//      start button
 var startButton = document.querySelector("#start-game");
-//      score
 var scoreCard = document.querySelector("#score");
 var wrongH2 = document.querySelector("#wrong");
 var btn1 = document.querySelector("#btn1");
@@ -52,11 +44,12 @@ var qabox = document.querySelector("#qa");
 var p = document.querySelector("button");
 
 var numOfHighScores = 5;
-// var highScores = "highScores";
-var highScoreString = localStorage.getItem("highScores");
-var highScores = JSON.parse(highScoreString) ?? [];
 
-document.querySelector("#start-game").addEventListener("click", function () {
+var highScoreString = localStorage.getItem("highScores");
+var highScores = JSON.parse(highScoreString)|| [];
+
+document.querySelector("#start-game").addEventListener("click", function (e) {
+  e.preventDefault();
   if (!isPlaying) {
     startQuiz();
   }
@@ -64,9 +57,10 @@ document.querySelector("#start-game").addEventListener("click", function () {
 
 
 function startQuiz() {
+  
   score = 0;
   scoreCard.textContent = score;
-  secondsLeft = 16;
+  secondsLeft = 100;
   timeH2.textContent = secondsLeft;
   isPlaying = true;
   //          hide start button
@@ -86,6 +80,8 @@ function startQuiz() {
       endGame();
       checkHighScore(score);
       showHighScores();
+      newGame();
+
     }
   }, 1000);
 
@@ -176,13 +172,9 @@ function checkHighScore(score) {
     showHighScores();
   }
 
-  
-  
-  //          getting first question
-  //          add question to the question container
-  //          make button for each answer
-  //          add answers to the answers container
 }
+
+
 function endGame() {
   var x = qabox;
   if (x.style.display === qabox.remove()) {
@@ -190,43 +182,64 @@ function endGame() {
   } else {
     x.style.display = qabox.remove();
   }
-  // highScores.map((score) => `<li>${score.score} - ${score.name}`);
-  var highScoreList = document.getElementById("high-scores");
- 
+
+  var highScoreList = document.getElementById("boxHS");
+
   highScoreList.innerHTML = highScores.map((score) => `<li>${score.score} - ${score.name}`
     );
   }
   function showHighScores() {
     
-    var highScores = JSON.parse(localStorage.getItem(highScores)) ?? [];
+    var highScores = JSON.parse(localStorage.getItem(highScores)) || [];
     var highScoresList = document.getElementById(highScores);
     
     highScoresList.innerHTML = highScores
     .map((score) => "<li>${score.score} - ${score.name}")
-    .join("");
+    score;
   }
   function saveHighScore(score, highScores) {
+   
     var name = prompt("You got a high score! Enter name:");
     var newScore = { score, name };
     
     highScores.push(newScore);
     highScores.sort((a, b) => b.score - a.score);
     highScores.splice(numOfHighScores);
+
     localStorage.setItem("highScores", JSON.stringify(highScores));
+    
   }
+  
   
   function checkAnswer(btn) {
     if (btn.className === "true") {
-      wrongH2.textContent = "Correct";
+      setTimeout(() => {
+        wrongH2.textContent = "Correct";
+      }, 250);
+     
       score++;
       scoreCard.textContent = score;
     } else {
-      wrongH2.textContent = "Incorrect";
+      setTimeout(() => {
+        wrongH2.textContent = "Incorrect";
+      }, 250);
+
       secondsLeft -= 10;
     }
+    wrongH2.style.display ="none"
     askQuestion();
   }
   
+function newGame(){
+  window.confirm("Would you like to start a new game?\n Either OK or Cancel");
+ if(newGame == true){
+  startQuiz();
+ }else{
+  isPlaying =false;
+ }
+ console.log(newGame)
+}
+
   btn1.addEventListener("click", function (event) {
     
     checkAnswer(btn1);
